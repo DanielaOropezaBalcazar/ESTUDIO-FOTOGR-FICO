@@ -94,4 +94,31 @@
 			mysqli_close($conexion);
 	}
 
+
+
+
+
+	// ABM de Pedidos
+	function altaPedido ($nombre, $telefono, $servicio, $comentario, $precio)
+	{
+		$conexion = Conectarse();
+
+			if (!$conexion)
+			{
+				echo "<h1>No se puede dar de alta. Error al conectar.</h1>";
+				exit();
+			}
+
+		// NO poner comillas simples en nombre de tabla, ni de campos, sólo en valores alfanuméricos.
+        
+
+		$consulta = "INSERT INTO pedidos (`Nombre`, `Telefono`, `Servicio`, `Comentarios`, `precio_del_servicio`) VALUES ('$nombre', '$telefono', '$servicio', '$comentario', $precio);";
+
+
+		$resultado=mysqli_query($conexion,$consulta);
+
+			//cerramos la conexión con el motor de BD
+			mysqli_close($conexion);
+	}
+
 ?>
