@@ -10,28 +10,30 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <style>
     /* Estilo para el contenedor de la imagen de fondo */
-.background-image {
-  position: relative;
-  height: 100vh;
-  background-image: url('Images/InicioSesion/paisaje1.jpeg');
-  background-size: cover;
-  background-position: center;
-}
+    .background-image {
+      position: relative;
+      height: 100vh;
+      background-image: url('Images/InicioSesion/paisaje1.jpeg');
+      background-size: cover;
+      background-position: center;
+    }
 
-/* Filtro de superposición para oscurecer la imagen */
-.background-image::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Cambia el último valor para ajustar la opacidad */
-}
+    /* Filtro de superposición para oscurecer la imagen */
+    .background-image::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      /* Cambia el último valor para ajustar la opacidad */
+    }
 
-.login-panel {
-      background-color: rgba(255, 255, 255, 0); 
-      border: 2px solid #ffffff; /* Borde blanco */
+    .login-panel {
+      background-color: rgba(255, 255, 255, 0);
+      border: 2px solid #ffffff;
+      /* Borde blanco */
       border-radius: 10px;
       padding: 20px;
       position: absolute;
@@ -70,15 +72,16 @@
     /* Estilo para el botón */
     .login-panel input[type="button"] {
       background-color: #ffffff;
-      /* Fondo blanco */
       color: #000000;
-      /* Texto negro */
       border: none;
-      /* Sin borde */
       border-radius: 15px;
-      /* Bordes más redondeados */
       padding: 10px 20px;
-      /* Espaciado interno */
+    }
+
+    /* Estilo para el botón cuando se presiona */
+    .login-panel input[type="button"].btn-primary:active {
+      background-color: #000000;
+      border-color: #fff;
     }
   </style>
 </head>
@@ -127,10 +130,10 @@
         data: parametros,
         url: 'procesosAjax/procesoLogin.php',
         type: 'post',
-        beforeSend: function () {
+        beforeSend: function() {
           $("#resultado").html("Procesando, espere por favor");
         },
-        success: function (response) {
+        success: function(response) {
           // Verificar si la respuesta indica un inicio de sesión exitoso
           if (response.trim() === "success") {
             window.location.href = "pedidos.php"; // Redirigir al usuario

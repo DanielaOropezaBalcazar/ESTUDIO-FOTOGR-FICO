@@ -56,21 +56,25 @@
       margin-bottom: 20px;
       padding: 10px;
     }
+
     .login-panel select,
     .login-panel select:focus {
-    background-color: rgba(255, 255, 255, 0);
-    border: 1px solid #ffffff;
-    border-radius: 15px;
-    color: #ffffff;
-    margin-bottom: 20px;
-    padding: 5px;
-    width: 100%; /* Ajusta el ancho según tus necesidades */
-  }
-  
-.login-panel select option {
-  background-color: rgba(0, 0, 0, 1); /* Color de fondo semitransparente */
-  color: #ffffff; /* Color del texto */
-}
+      background-color: rgba(255, 255, 255, 0);
+      border: 1px solid #ffffff;
+      border-radius: 15px;
+      color: #ffffff;
+      margin-bottom: 20px;
+      padding: 5px;
+      width: 100%;
+      /* Ajusta el ancho según tus necesidades */
+    }
+
+    .login-panel select option {
+      background-color: rgba(0, 0, 0, 1);
+      /* Color de fondo semitransparente */
+      color: #ffffff;
+      /* Color del texto */
+    }
 
     /* Estilo para el placeholder */
     .login-panel input[type="tel"]::placeholder,
@@ -92,6 +96,21 @@
       /* Bordes más redondeados */
       padding: 10px 20px;
       /* Espaciado interno */
+    }
+
+    /* Estilo para el botón */
+    .login-panel input[type="button"] {
+      background-color: #ffffff;
+      color: #000000;
+      border: none;
+      border-radius: 15px;
+      padding: 10px 20px;
+    }
+
+    /* Estilo para el botón cuando se presiona */
+    .login-panel input[type="button"].btn-primary:active {
+      background-color: #000000;
+      border-color: #fff;
     }
   </style>
 </head>
@@ -129,6 +148,10 @@
             <!-- Agrega más opciones según sea necesario -->
           </select>
         </div>
+
+        <!-- Ingresar Precio segun boda Graduacion 15Anios -->
+        <input type="text" class="form-control" id="precio" placeholder="Precio $us" readonly>
+
         <div class="form-group">
           <textarea type="text" class="form-control" id="comentario" rows="3" placeholder="Comentario"></textarea>
         </div>
@@ -149,48 +172,60 @@
     function cambiarImagen() {
       var servicioSeleccionado = document.getElementById("servicio").value;
       var imagen = document.getElementById("imagen-servicio");
+      var precio = document.getElementById("precio");
 
-      // Ruta de las imágenes para cada opción seleccionada
-      var rutaImagenes = {
-        "Boda": "Images/Eventos/Boda.jpeg",
-        "Graduacion": "Images/Eventos/Graduacion.jpeg",
-        "15Años": "Images/Eventos/15 anios.jpeg"
-        // Agrega más opciones según sea necesario
+      // Ruta de las imágenes y precios para cada opción seleccionada
+      var opciones = {
+        "Boda": {
+          imagen: "Images/Eventos/Boda.jpeg",
+          precio: "700"
+        },
+        "Graduacion": {
+          imagen: "Images/Eventos/Graduacion.jpeg",
+          precio: "500"
+        },
+        "15Años": {
+          imagen: "Images/Eventos/15 anios.jpeg",
+          precio: "300"
+        }
       };
 
-      // Mostrar la imagen correspondiente a la opción seleccionada
-      if (rutaImagenes.hasOwnProperty(servicioSeleccionado)) {
-        imagen.src = rutaImagenes[servicioSeleccionado];
-        imagen.style.display = "block"; // Mostrar la imagen
+      // Actualizar la imagen y el precio correspondiente a la opción seleccionada
+      if (opciones.hasOwnProperty(servicioSeleccionado)) {
+        imagen.src = opciones[servicioSeleccionado].imagen;
+        imagen.style.display = "block";
+        precio.value = opciones[servicioSeleccionado].precio;
       } else {
-        imagen.style.display = "none"; // Ocultar la imagen si no hay ninguna opción seleccionada
+        imagen.style.display = "none";
+        precio.value = ""; // Limpiar el campo de precio si no hay ninguna opción seleccionada
       }
     }
 
-
     function RegistroPedido() {
-
       var name = document.getElementById("nombre").value;
       var phone = document.getElementById("telefono").value;
       var service = document.getElementById("servicio").value;
       var comment = document.getElementById("comentario").value;
+      var price = document.getElementById("precio").value; // Recuperar el precio
 
       console.log(name);
       console.log(phone);
       console.log(service);
       console.log(comment);
+      console.log(price); // Mostrar el precio en la consola para verificar
 
       var parametros = {
         "nombre": name,
         "telefono": phone,
         "servicio": service,
         "comentario": comment,
-        "action": alta
+        "precio": price,
+        "accion": "realizar_alta"
       };
 
       $.ajax({
         data: parametros,
-        url: 'procesosAjax/procesoLogin.php',
+        url: 'procesosAjax/registroPedido.php',
         type: 'post',
         beforeSend: function() {
           $("#resultado").html("Procesando, espere por favor");
@@ -200,7 +235,7 @@
           if (response.trim() === "success") {
             window.location.href = "pedidos.php"; // Redirigir al usuario
           } else {
-            alert("Usuario o contraseña incorrectos")
+            alert("No se pudo realizar el pedido. Inténtelo de nuevo.")
             $("#resultado").html(response); // Mostrar mensaje de error
           }
         }

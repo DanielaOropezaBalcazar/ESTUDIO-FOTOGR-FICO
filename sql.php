@@ -99,7 +99,7 @@
 
 
 	// ABM de Pedidos
-	function altaPedido ($costoEnvio, $fecha, $Dron_idDron)
+	function altaPedido ($nombre, $telefono, $servicio, $comentario, $precio)
 	{
 		$conexion = Conectarse();
 
@@ -112,7 +112,7 @@
 		// NO poner comillas simples en nombre de tabla, ni de campos, sólo en valores alfanuméricos.
         
 
-		$consulta = "INSERT INTO Pedido (`costoEnvio`, `fecha`, `Dron_idDron`) VALUES ('$costoEnvio', '$fecha', '$Dron_idDron');";
+		$consulta = "INSERT INTO pedidos (`Nombre`, `Telefono`, `Servicio`, `Comentarios`, `precio_del_servicio`) VALUES ('$nombre', '$telefono', '$servicio', '$comentario', $precio);";
 
 
 		$resultado=mysqli_query($conexion,$consulta);
