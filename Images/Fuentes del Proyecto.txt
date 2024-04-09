@@ -1,0 +1,9 @@
+Fuentes:
+1. Barra de navegación: Overlock
+2. Home: Roboto
+3. Eventos: Inria Serif para títulos y Roboto para descripciones
+4. Inicio de Sesión: Playfair Display para "Login" y Rubik para lo demás
+5. ABM: Roboto
+6. Fotos: Ninguna
+7. Pedidos: Playfair Display para "Pedidos" y Rubik para lo demás
+8. Contactos: Playfair Display para "Contáctanos" y Roboto para lo demás
