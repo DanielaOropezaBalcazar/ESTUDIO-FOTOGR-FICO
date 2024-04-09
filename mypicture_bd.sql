@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-04-2024 a las 20:32:40
+-- Tiempo de generación: 09-04-2024 a las 19:22:05
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -43,11 +43,11 @@ CREATE TABLE `fotos` (
 
 CREATE TABLE `pedidos` (
   `id` int(11) NOT NULL,
-  `id_foto` int(11) DEFAULT NULL,
-  `precio` decimal(10,2) NOT NULL,
-  `costo_envio` decimal(10,2) NOT NULL,
-  `total` decimal(10,2) GENERATED ALWAYS AS (`precio` + `costo_envio`) VIRTUAL,
-  `fecha_entrega` date NOT NULL
+  `Nombre` varchar(255) NOT NULL,
+  `Telefono` varchar(255) NOT NULL,
+  `Servicio` varchar(255) NOT NULL,
+  `Comentarios` text DEFAULT NULL,
+  `precio_del_servicio` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -62,6 +62,50 @@ CREATE TABLE `usuarios` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `fotos`
+--
+ALTER TABLE `fotos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `pedidos`
+--
+ALTER TABLE `pedidos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `fotos`
+--
+ALTER TABLE `fotos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `pedidos`
+--
+ALTER TABLE `pedidos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
