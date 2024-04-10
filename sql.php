@@ -1,7 +1,7 @@
 <?php
 	function Conectarse()
 	{//inttroducimos los datos de  host que son "Server", "usuario" y "contraseña" 
-		if (!($link=mysqli_connect("localhost","root","1590PPL")))//aca hay que introducir los datos que especifique arriba!!!
+		if (!($link=mysqli_connect("localhost","root","")))//aca hay que introducir los datos que especifique arriba!!!
 		{
 			return 0;
 		}
@@ -120,5 +120,109 @@
 			//cerramos la conexión con el motor de BD
 			mysqli_close($conexion);
 	}
+
+	function agregarFoto($nombre, $descripcion, $precio, $urlImagen) {
+		$conexion = Conectarse();
+		if (!$conexion) {
+			return "Error al conectar con la base de datos.";
+		}
+	
+		$consulta = "INSERT INTO fotos (nombre, descripcion, precio, columna_imagen) VALUES (?, ?, ?, ?);";
+		
+		// Preparar la sentencia
+		if ($stmt = mysqli_prepare($conexion, $consulta)) {
+			// Vincular los parámetros para los marcadores
+			mysqli_stmt_bind_param($stmt, "ssds", $nombre, $descripcion, $precio, $urlImagen);
+			
+			// Ejecutar la consulta
+			$resultado = mysqli_stmt_execute($stmt);
+			
+			// Cerrar la sentencia
+			mysqli_stmt_close($stmt);
+			
+			mysqli_close($conexion);
+			
+			return $resultado ? "Foto agregada con éxito." : "Error al agregar la foto.";
+		} else {
+			mysqli_close($conexion);
+			return "Error al preparar la consulta.";
+		}
+	}
+
+	function obtenerFotos() {
+		$conexion = Conectarse();
+		if (!$conexion) {
+			return "Error al conectar con la base de datos.";
+		}
+		$consulta = "SELECT id, nombre FROM fotos;";
+		$resultado = mysqli_query($conexion, $consulta);
+		$fotos = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
+		mysqli_close($conexion);
+		return $fotos;
+	}
+	
+	function obtenerDetallesFoto($id) {
+		$conexion = Conectarse();
+		if (!$conexion) {
+			return "Error al conectar con la base de datos.";
+		}
+		$consulta = "SELECT * FROM fotos WHERE id = ?;";
+		if ($stmt = mysqli_prepare($conexion, $consulta)) {
+			mysqli_stmt_bind_param($stmt, "i", $id);
+			mysqli_stmt_execute($stmt);
+			$resultado = mysqli_stmt_get_result($stmt);
+			$foto = mysqli_fetch_assoc($resultado);
+			mysqli_stmt_close($stmt);
+			mysqli_close($conexion);
+			return $foto;
+		} else {
+			mysqli_close($conexion);
+			return "Error al preparar la consulta.";
+		}
+	}
+
+	function actualizarFoto($id, $nombre, $descripcion, $precio, $urlImagen) {
+		$conexion = Conectarse();
+		if (!$conexion) {
+			return "Error al conectar con la base de datos.";
+		}
+	
+		$consulta = "UPDATE fotos SET nombre = ?, descripcion = ?, precio = ?, columna_imagen = ? WHERE id = ?;";
+		
+		if ($stmt = mysqli_prepare($conexion, $consulta)) {
+			mysqli_stmt_bind_param($stmt, "ssdsi", $nombre, $descripcion, $precio, $urlImagen, $id);
+			$resultado = mysqli_stmt_execute($stmt);
+			mysqli_stmt_close($stmt);
+			mysqli_close($conexion);
+			return $resultado ? "Foto actualizada con éxito." : "Error al actualizar la foto.";
+		} else {
+			mysqli_close($conexion);
+			return "Error al preparar la consulta.";
+		}
+	}
+	
+	function eliminarFoto($id) {
+		$conexion = Conectarse();
+		if (!$conexion) {
+			return false;
+		}
+	
+		$consulta = "DELETE FROM fotos WHERE id = ?;";
+		
+		if ($stmt = mysqli_prepare($conexion, $consulta)) {
+			mysqli_stmt_bind_param($stmt, "i", $id);
+			$resultado = mysqli_stmt_execute($stmt);
+			mysqli_stmt_close($stmt);
+			mysqli_close($conexion);
+			return $resultado;
+		} else {
+			mysqli_close($conexion);
+			return false;
+		}
+	}
+	
+	
+	
+
 
 ?>
