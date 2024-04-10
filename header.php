@@ -39,7 +39,7 @@
         <a class="nav-link" href="index.php">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Eventos</a>
+        <a class="nav-link" href="eventos.php">Eventos</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="login.php">Inicio de Sesión</a>
