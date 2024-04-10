@@ -89,6 +89,20 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.4); /* Color negro semi-transparente */
         }
+        .login-panel {
+      background-color: rgba(255, 255, 255, 0);
+      border: 2px solid #ffffff;
+      /* Borde blanco */
+      border-radius: 10px;
+      padding: 20px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 400px;
+      text-align: center;
+      color: #ffffff;
+    }
 
     </style>
 </head>
@@ -96,6 +110,7 @@
 
   <!-- Navbar -->
   <?php include('header.php'); ?>
+  <div class="login-panel">
   <table>
     <td>
         <div class="contenedor">
@@ -114,7 +129,7 @@
         </div>
     </td>
     </table>
-
+    </div>
   <!-- Scripts de Bootstrap (jQuery y Popper.js) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>

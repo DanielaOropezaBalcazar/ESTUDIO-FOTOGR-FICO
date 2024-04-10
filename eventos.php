@@ -103,21 +103,7 @@
     </style>
 </head>
 <body>
-    <center>
-        <div class="banner">
-            <a href="index.php">HOME</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <b><a href="eventos.php">EVENTOS</a></b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="sesion.php">INICIAR SESI&Oacute;N</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <img src= "Imagenes/Logo.png" id="Imagenlogo">
-            <a href="fotos.php">FOTOS</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="pedidos.php">PEDIDOS</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="contactos.php">CONTACTOS</a>
-        </div>
-    </center>
-    <br>
-    <br>
-
-    <br>
+<?php include('header.php'); ?>
     <hr>
     <center>
         <table>
