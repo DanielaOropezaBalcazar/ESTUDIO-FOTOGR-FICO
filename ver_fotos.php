@@ -11,35 +11,39 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="procesosAjax/verificarSesion.js"></script>
-  <script src="procesosAjax/elim_foto.js"></script>
-
 </head>
 
 <body class="bg-light">
 
-  <!-- Navbar -->
-    <!-- Navbar -->
-    <?php include('header.php'); ?>
+    <?php include('header.php'); 
+     include('sql.php'); // Incluye sql.php para usar obtenerTodasLasFotos()
+    $fotos = obtenerTodasLasFotos();
+?>
   
   <div class="container mt-5">
-  <div class="row">
-      <div class="col-md-6 offset-md-3">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title text-center">Eliminar Fotografía</h5>
-            <form id="formularioEliminarFoto">
-              <div class="form-group">
-                <label for="selectFotoEliminar">Seleccionar Foto para Eliminar</label>
-                <select class="form-control" id="selectFotoEliminar" name="selectFotoEliminar">
-                  
-                </select>
-              </div>
-              <button type="submit" class="btn btn-danger">Eliminar Foto</button>
-            </form>
-          </div>
-        </div>
-      </div>
+  <div class="container mt-5">
+    <div class="row">
+        <?php 
+        if(count($fotos) > 0){
+            foreach ($fotos as $row){
+                echo '<div class="col-md-4 mb-4">';
+                echo '<div class="card">';
+                echo '<img src="' . htmlspecialchars($row['columna_imagen']) . '" class="card-img-top" alt="Imagen de la Foto">';
+                echo '<div class="card-body">';
+                echo '<h5 class="card-title">' . htmlspecialchars($row['nombre']) . '</h5>';
+                echo '<p class="card-text">' . htmlspecialchars($row['descripcion']) . '</p>';
+                echo '<p class="card-text">Precio: $' . htmlspecialchars($row['precio']) . '</p>';
+                echo '</div>';
+                echo '</div>';
+                echo '</div>';
+            }
+        } else {
+            echo '<div class="col-md-12"><p>No hay fotos disponibles en este momento.</p></div>';
+        }
+        ?>
     </div>
+</div>
+    
     <div class="text-center mt-4">
     <a href="fotos.php" class="btn btn-secondary">Agregar Foto</a>
     <a href="modificar_fotos.php" class="btn btn-secondary">Modificar Foto</a>

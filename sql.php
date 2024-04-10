@@ -220,6 +220,26 @@
 			return false;
 		}
 	}
+
+	function obtenerTodasLasFotos() {
+		$conexion = Conectarse();
+		if (!$conexion) {
+			return [];
+		}
+		
+		$consulta = "SELECT * FROM fotos;";
+		$resultado = mysqli_query($conexion, $consulta);
+		
+		if($resultado) {
+			$fotos = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
+		} else {
+			$fotos = [];
+		}
+		
+		mysqli_close($conexion);
+		return $fotos;
+	}
+	
 	
 	
 	

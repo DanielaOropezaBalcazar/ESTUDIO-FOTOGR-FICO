@@ -62,6 +62,7 @@
     <a href="fotos.php" class="btn btn-secondary">Agregar Foto</a>
     <a href="modificar_fotos.php" class="btn btn-secondary">Modificar Foto</a>
     <a href="eliminar_fotos.php" class="btn btn-secondary">Eliminar Foto</a>
+    <a href="ver_fotos.php" class="btn btn-secondary">Ver fotos</a>
 </div>
 </div>
 
