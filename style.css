@@ -1,0 +1,107 @@
+/* Estilo para el contenedor de la imagen de fondo */
+.background-image {
+    background-image: url('Images/Pedidos/Montanas.jpeg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    position: relative;
+    background-attachment: scroll;
+    color: #ffffff;
+  }
+
+  .background-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Cambia el último valor para ajustar la opacidad */
+  }
+
+  /* Estilo para el panel de inicio de sesión */
+  .login-panel {
+    background-color: rgba(255, 255, 255, 0);
+    border: 2px solid #ffffff;
+    /* Borde blanco */
+    border-radius: 10px;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 400px;
+    text-align: center;
+    color: #ffffff;
+  }
+
+  .login-panel input[type="tel"],
+  .login-panel input[type="text"],
+  .login-panel textarea[type="text"] {
+    background-color: rgba(255, 255, 255, 0);
+    border: 1px solid #ffffff;
+    border-radius: 15px;
+    color: #ffffff;
+    margin-bottom: 20px;
+    padding: 10px;
+  }
+
+  .login-panel select,
+  .login-panel select:focus {
+    background-color: rgba(255, 255, 255, 0);
+    border: 1px solid #ffffff;
+    border-radius: 15px;
+    color: #ffffff;
+    margin-bottom: 20px;
+    padding: 5px;
+    width: 100%;
+    /* Ajusta el ancho según tus necesidades */
+  }
+
+  .login-panel select option {
+    background-color: rgba(0, 0, 0, 1);
+    /* Color de fondo semitransparente */
+    color: #ffffff;
+    /* Color del texto */
+  }
+
+  /* Estilo para el placeholder */
+  .login-panel input[type="tel"]::placeholder,
+  .login-panel input[type="text"]::placeholder,
+  .login-panel textarea::placeholder {
+    color: #ffffff;
+    /* Color del placeholder blanco */
+  }
+
+  /* Estilo para el botón */
+  .login-panel button {
+    background-color: #ffffff;
+    /* Fondo blanco */
+    color: #000000;
+    /* Texto negro */
+    border: none;
+    /* Sin borde */
+    border-radius: 15px;
+    /* Bordes más redondeados */
+    padding: 10px 20px;
+    /* Espaciado interno */
+  }
+
+  /* Estilo para el botón */
+  .login-panel input[type="button"] {
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 20px;
+  }
+
+  /* Estilo para el botón cuando se presiona */
+  .login-panel input[type="button"].btn-primary:active {
+    background-color: #000000;
+    border-color: #fff;
+  }
+
+
+  
