@@ -47,7 +47,7 @@
     </ul>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link" href="galeria.php">Fotos</a>
+        <a class="nav-link" href="fotos.php">Fotos</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="pedidos.php">Pedidos</a>
