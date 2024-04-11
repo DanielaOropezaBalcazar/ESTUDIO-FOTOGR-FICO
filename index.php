@@ -27,7 +27,7 @@
     <td>
         <div class="contenedor">
             <div class="superpuesto"></div>
-            <img src="Imagenes/Home/Animas.jpeg" class="imagen">
+            <img src="Images/Home/Animas.jpeg" class="imagen">
             <h1 class="texto-encima">Bolivia</h1>
         </div>
         <br>
@@ -37,7 +37,7 @@
         <br>
         <div class="contenedor">
             <div class="superpuesto"></div>
-            <img src="Imagenes/Home/SalarA.jpeg" class="imagen">
+            <img src="Images/Home/SalarA.jpeg" class="imagen">
             <h3 class="texto-encima3">En My Picture capturamos tus mejores<br>
              momentos. Vis&iacute;tanos y comparte tus recuerdos con el mundo!</h3>
         </div>
