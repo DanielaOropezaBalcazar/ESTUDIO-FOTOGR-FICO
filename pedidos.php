@@ -72,15 +72,15 @@
       // Ruta de las imágenes y precios para cada opción seleccionada
       var opciones = {
         "Boda": {
-          imagen: "Images/Eventos/Boda.jpeg",
+          imagen: "Images/Eventos/Boda1.jpg",
           precio: "700"
         },
         "Graduacion": {
-          imagen: "Images/Eventos/Graduacion.jpeg",
+          imagen: "Images/Eventos/Graduacion1.jpg",
           precio: "500"
         },
         "15Años": {
-          imagen: "Images/Eventos/15 anios.jpeg",
+          imagen: "Images/Eventos/15.jpg",
           precio: "300"
         }
       };
@@ -128,6 +128,7 @@
         success: function(response) {
           // Verificar si la respuesta indica un inicio de sesión exitoso
           if (response.trim() === "success") {
+            alert("Pedido realizado con éxito.");
             window.location.href = "pedidos.php"; // Redirigir al usuario
           } else {
             alert("No se pudo realizar el pedido. Inténtelo de nuevo.")
