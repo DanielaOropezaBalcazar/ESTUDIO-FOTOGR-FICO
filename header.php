@@ -47,13 +47,13 @@
     </ul>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link" href="fotos.php">Fotos</a>
+        <a class="nav-link" href="galeria.php">Fotos</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="pedidos.php">Pedidos</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Contacto</a>
+        <a class="nav-link" href="contactos.php">Contacto</a>
       </li>
     </ul>
   </div>
