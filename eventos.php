@@ -29,7 +29,7 @@
             font-family: "Inria Serif", serif;
             font-weight: 700;
             font-style: normal;
-            font-size: 70px
+            font-size: 70px;
 
         }
 
@@ -110,7 +110,7 @@
             <tr>
                 <td>
                     <div class="contenedor">
-                        <img src="Imagenes/Eventos/Boda1.jpg">
+                        <img src="Images/Eventos/Boda1.jpg">
                     </div>
                 </td>
 
@@ -133,14 +133,14 @@
 
                 <td>
                     <div class="contenedor">
-                        <img src="Imagenes/Eventos/Graduacion1.jpg">
+                        <img src="Images/Eventos/Graduacion1.jpg">
                     </div>
                 </td>
             </tr>
             <tr>
                 <td>
                     <div class="contenedor">
-                        <img src="Imagenes/Eventos/15.jpg">
+                        <img src="Images/Eventos/15.jpg">
                     </div>
                 </td>
 
